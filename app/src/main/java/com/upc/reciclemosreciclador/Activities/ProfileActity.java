@@ -79,7 +79,7 @@ public class ProfileActity extends AppCompatActivity  implements NavigationView.
         BottomNavigationView bottomNavigationView = findViewById(R.id.botton_navigation);
 
         //SELECCIÓN
-        bottomNavigationView.setSelectedItemId(R.id.condominio);
+        bottomNavigationView.setSelectedItemId(R.id.miaporte);
 
         //CAMBIO DE SELECCIÓN
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -88,10 +88,6 @@ public class ProfileActity extends AppCompatActivity  implements NavigationView.
                 switch (item.getItemId()){
                     case R.id.miaporte:
                         startActivity(new Intent(getApplicationContext(), ValidarActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.condominio:
-                        startActivity(new Intent(getApplicationContext(), CondominioActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.escaner:
@@ -122,6 +118,9 @@ public class ProfileActity extends AppCompatActivity  implements NavigationView.
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            case R.id.nav_condominio:
+                startActivity(new Intent(getApplicationContext(), CondominioActivity.class));
+                break;
             case R.id.nav_info:
                 Toast.makeText(this, "Proximamente 11", Toast.LENGTH_SHORT).show();
                 break;

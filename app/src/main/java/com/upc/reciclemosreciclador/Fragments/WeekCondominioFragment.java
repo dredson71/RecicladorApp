@@ -261,24 +261,24 @@ public class WeekCondominioFragment extends Fragment {
         Calendar c = Calendar.getInstance();
         int dia =  c.get(Calendar.DAY_OF_WEEK);
         if(dia==Calendar.SUNDAY){
-            setDays(0,c.get(Calendar.DAY_OF_MONTH),c.get(Calendar.MONTH));
+            setDays(0,c.get(Calendar.DAY_OF_MONTH),c.get(Calendar.MONTH)+1);
         }if(dia==Calendar.MONDAY){
-        setDays(1,c.get(Calendar.DAY_OF_MONTH),c.get(Calendar.MONTH));
+        setDays(1,c.get(Calendar.DAY_OF_MONTH),c.get(Calendar.MONTH)+1);
     }
         if(dia==Calendar.TUESDAY){
-            setDays(2,c.get(Calendar.DAY_OF_MONTH),c.get(Calendar.MONTH));
+            setDays(2,c.get(Calendar.DAY_OF_MONTH),c.get(Calendar.MONTH)+1);
         }
         if(dia==Calendar.WEDNESDAY){
-            setDays(3,c.get(Calendar.DAY_OF_MONTH),c.get(Calendar.MONTH));
+            setDays(3,c.get(Calendar.DAY_OF_MONTH),c.get(Calendar.MONTH)+1);
         }
         if(dia==Calendar.THURSDAY){
-            setDays(4,c.get(Calendar.DAY_OF_MONTH),c.get(Calendar.MONTH));
+            setDays(4,c.get(Calendar.DAY_OF_MONTH),c.get(Calendar.MONTH)+1);
         }
         if(dia==Calendar.FRIDAY){
-            setDays(5,c.get(Calendar.DAY_OF_MONTH),c.get(Calendar.MONTH));
+            setDays(5,c.get(Calendar.DAY_OF_MONTH),c.get(Calendar.MONTH)+1);
         }
         if(dia==Calendar.SATURDAY){
-            setDays(6,c.get(Calendar.DAY_OF_MONTH),c.get(Calendar.MONTH));
+            setDays(6,c.get(Calendar.DAY_OF_MONTH),c.get(Calendar.MONTH)+1);
         }
     }
 

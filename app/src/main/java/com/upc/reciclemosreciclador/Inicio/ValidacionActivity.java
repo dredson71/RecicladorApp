@@ -102,11 +102,6 @@ public class ValidacionActivity extends AppCompatActivity implements NavigationV
                         startActivity(new Intent(getApplicationContext(), ValidarActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.condominio:
-                        ((ValQrFragment) valQrFragment).pauseScan();
-                        startActivity(new Intent(getApplicationContext(), CondominioActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
                     case R.id.escaner:
                         ((ValQrFragment) valQrFragment).pauseScan();
                         startActivity(new Intent(getApplicationContext(), BolsaActivity.class));
@@ -211,6 +206,9 @@ public class ValidacionActivity extends AppCompatActivity implements NavigationV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            case R.id.nav_condominio:
+                startActivity(new Intent(getApplicationContext(), CondominioActivity.class));
+                break;
             case R.id.nav_info:
                 Toast.makeText(this, "Proximamente...", Toast.LENGTH_SHORT).show();
                 break;

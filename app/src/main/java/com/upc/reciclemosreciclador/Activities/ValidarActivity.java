@@ -97,10 +97,6 @@ public class ValidarActivity extends AppCompatActivity  implements NavigationVie
                         startActivity(new Intent(getApplicationContext(), ValidarActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.condominio:
-                        startActivity(new Intent(getApplicationContext(), CondominioActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
                     case R.id.escaner:
                         startActivity(new Intent(getApplicationContext(), BolsaActivity.class));
                         overridePendingTransition(0,0);
@@ -131,6 +127,9 @@ public class ValidarActivity extends AppCompatActivity  implements NavigationVie
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            case R.id.nav_condominio:
+                startActivity(new Intent(getApplicationContext(), CondominioActivity.class));
+                break;
             case R.id.nav_info:
                 Toast.makeText(this, "Proximamente 11", Toast.LENGTH_SHORT).show();
                 break;

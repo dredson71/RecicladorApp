@@ -5,10 +5,6 @@
         android:title="Mi Aporte"
         android:icon="@drawable/ic_mi_aporte"/>
 
-    <item
-        android:id="@+id/condominio"
-        android:title="Condominios"
-        android:icon="@drawable/ic_condominio"/>
 
     <item
         android:id="@+id/escaner"

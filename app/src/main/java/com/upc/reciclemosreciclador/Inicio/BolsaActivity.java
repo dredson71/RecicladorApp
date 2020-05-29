@@ -86,11 +86,6 @@ public class BolsaActivity extends AppCompatActivity implements NavigationView.O
                         startActivity(new Intent(getApplicationContext(), ValidarActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.condominio:
-                        ((QrFragment) qrFragment).pauseScan();
-                        startActivity(new Intent(getApplicationContext(), CondominioActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
                     case R.id.escaner:
                         ((QrFragment) qrFragment).pauseScan();
                         startActivity(new Intent(getApplicationContext(), BolsaActivity.class));
@@ -132,6 +127,9 @@ public class BolsaActivity extends AppCompatActivity implements NavigationView.O
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            case R.id.nav_condominio:
+                startActivity(new Intent(getApplicationContext(), CondominioActivity.class));
+                break;
             case R.id.nav_info:
                 Toast.makeText(this, "Proximamente...", Toast.LENGTH_SHORT).show();
                 break;
