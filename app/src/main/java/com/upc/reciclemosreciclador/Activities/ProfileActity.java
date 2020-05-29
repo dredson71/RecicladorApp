@@ -1,14 +1,5 @@
 package com.upc.reciclemosreciclador.Activities;
 
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,30 +9,35 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.upc.reciclemosreciclador.Adapters.ViewValidarBolsasAdapter;
 import com.upc.reciclemosreciclador.Adicionales.dbHelper;
-import com.upc.reciclemosreciclador.Fragments.CondominioValidarFragment;
-import com.upc.reciclemosreciclador.Fragments.TotalBolsasValidarFragment;
+import com.upc.reciclemosreciclador.Fragments.CondominioListaFragment;
+import com.upc.reciclemosreciclador.Fragments.ProfileFragment;
 import com.upc.reciclemosreciclador.Inicio.BolsaActivity;
-import com.upc.reciclemosreciclador.Inicio.QrFragment;
 import com.upc.reciclemosreciclador.Inicio.ValidacionActivity;
 import com.upc.reciclemosreciclador.R;
-import com.google.android.material.tabs.TabLayout;
 
-public class ValidarActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
+public class ProfileActity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mDrawerLayout;
-    private ViewPager viewPager;
-    private ViewValidarBolsasAdapter adapter;
-    private TabLayout tabLayout;
+    FragmentManager fragmentManager;
+    FragmentTransaction transaction;
+    Fragment profileFragment = ProfileFragment.newInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_validar);
+        setContentView(R.layout.activity_profile_actity);
 
         //Menu Desplegable
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -53,14 +49,10 @@ public class ValidarActivity extends AppCompatActivity  implements NavigationVie
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
 
-
-        viewPager = findViewById(R.id.viewPagerTendencia);
-        tabLayout = findViewById(R.id.tabLayoutTendencia);
-        adapter = new ViewValidarBolsasAdapter(getSupportFragmentManager());
-        adapter.AddFragment(new CondominioValidarFragment(),"Por Condominio");
-        adapter.AddFragment(new TotalBolsasValidarFragment(),"General");
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
+        fragmentManager = getSupportFragmentManager();
+        transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fragment, profileFragment);
+        transaction.commit();
 
 
         dbHelper helper = new dbHelper(this,"Usuario.sqlite", null, 1);
@@ -82,11 +74,12 @@ public class ValidarActivity extends AppCompatActivity  implements NavigationVie
 
 
 
-       //INICIALIZA APP BAR
+
+        //INICIALIZA APP BAR
         BottomNavigationView bottomNavigationView = findViewById(R.id.botton_navigation);
 
         //SELECCIÓN
-        bottomNavigationView.setSelectedItemId(R.id.miaporte);
+        bottomNavigationView.setSelectedItemId(R.id.condominio);
 
         //CAMBIO DE SELECCIÓN
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -115,9 +108,7 @@ public class ValidarActivity extends AppCompatActivity  implements NavigationVie
                 return false;
             }
         });
-
     }
-
 
     @Override
     public void onBackPressed() {
@@ -144,6 +135,4 @@ public class ValidarActivity extends AppCompatActivity  implements NavigationVie
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
 }

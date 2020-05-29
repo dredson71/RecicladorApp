@@ -17,8 +17,9 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:textSize="20dp"
-        android:hint="Buscar condominio"
+        android:textSize="15dp"
+        android:hint="Buscar condominio, distrito, urbanizacion"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

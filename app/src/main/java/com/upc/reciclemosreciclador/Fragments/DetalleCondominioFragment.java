@@ -70,7 +70,7 @@ public class DetalleCondominioFragment extends Fragment implements OnMapReadyCal
         txtNumeroContacto.setText("Numero: "+condominio.getNumeroContacto());
         txtCantidad.setText("Unidades: "+ Integer.toString(contenedor.getCantBolsas()));
        // txtPeso.setText("Capacidad: "+Double.toString(contenedor.getCantidadTotal()/1000));
-        txtPeso.setText("Capacidad maxima por unidad: 10000L" );
+        txtPeso.setText("Capacidad maxima por unidad: 1100L" );
         String address = condominio.getDireccion() + " "+condominio.getDistrito().getNombre();
         SupportMapFragment mapFragment =  (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.imgRutaCondominio);
         GeoLocation geoLocation = new GeoLocation();

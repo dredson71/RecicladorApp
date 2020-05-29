@@ -68,7 +68,7 @@ public class APIToSQLite {
         JsonPlaceHolderApi jsonPlaceHolderApi=retrofit.create(JsonPlaceHolderApi.class);
         Call<Reciclador> call=jsonPlaceHolderApi.getRecicladorByEmailPassword("/reciclador/correo/" + email + "/" + password);
         Response<Reciclador> response = call.execute();
-        String[] ayuda = new String[12];
+        String[] ayuda = new String[13];
         ayuda[0] = response.body().getNombre();
         ayuda[1] = response.body().getApellido();
         ayuda[2] = response.body().getDireccion();
@@ -77,11 +77,13 @@ public class APIToSQLite {
         ayuda[5] = response.body().getFecha_Nacimiento();
         ayuda[6] = response.body().getCelular();
         ayuda[7] = response.body().getCodigo().toString();
-        ayuda[10] = response.body().getAsociacion().getNombre();
-        ayuda[11] = response.body().getCodFormalizado();
-        String query = "insert into Reciclador (nombre, apellido, direccion, dni, email, fecha_Nacimiento, celular, codigo, asociacion_name, codFormalizado) " +
+        ayuda[8] = response.body().getAsociacion().getNombre();
+        ayuda[9] = response.body().getCodFormalizado();
+        ayuda[10] = response.body().getDistrito().getDepartamento().getNombre();
+        ayuda[11] = response.body().getDistrito().getNombre();
+        String query = "insert into Reciclador (nombre, apellido, direccion, dni, email, fecha_Nacimiento, celular, codigo, asociacion_name, codFormalizado,departamento_name,distrito_name) " +
                 "values ('" + ayuda[0] + "', '" + ayuda[1] + "', '" + ayuda[2] + "', '" + ayuda[3] + "', '" + ayuda[4] + "', '" + ayuda[5] + "', '"
-                + ayuda[6] + "', '" + ayuda[7] + "', '" + ayuda[8] + "', '" + ayuda[9] + "')";
+                + ayuda[6] + "', '" + ayuda[7] + "', '" + ayuda[8] + "', '" + ayuda[9] + "', '" + ayuda[10] + "', '" + ayuda[11] + "')";
         db.execSQL(query);
         System.out.println(query);
 
